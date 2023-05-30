@@ -7,7 +7,7 @@ export interface Subject {
 }
 
 export interface Observer {
-    update(temp: number, humidity: number, pressure: number); //각 옵저버들에 전달되는 상태값
+    update(); //각 옵저버들에 전달되는 상태값//temperature: number, humidity: number, pressure: number
 }
 
 export interface DisplayElement {
