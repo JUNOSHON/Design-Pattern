@@ -1,6 +1,6 @@
 import {Beverage} from "./Beverage";
 
-class americano extends Beverage {
+export class americano extends Beverage {
 
     constructor() {
         super("americano", 2000); //생성자
@@ -15,11 +15,14 @@ class americano extends Beverage {
         if (this.hasSizeup()) {
             total += 1000;
         }
+        if(this.hasIce()) {
+            total += 500;
+        }
         return total;
     }
 
     getDescription(): string {
-        return "";
+        return "아메리카노";
     }
 
 }

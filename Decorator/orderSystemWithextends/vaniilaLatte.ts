@@ -1,6 +1,6 @@
 import {Beverage} from "./Beverage";
 
-class vanillaLatte extends Beverage {
+export class vanillaLatte extends Beverage {
 
 
     constructor() {
@@ -21,13 +21,16 @@ class vanillaLatte extends Beverage {
         if (this.hasShot()) {
             total += 500;
         }
+        if(this.hasIce()) {
+            total += 500;
+        }
 
 
         return total;
     }
 
     getDescription(): string {
-        return "";
+        return "바닐라라떼";
     }
 
 }
