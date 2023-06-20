@@ -1,11 +1,11 @@
 export interface Reader {
 
-    update(newBook: boolean, nineteen : boolean);
+    update();
 }
 export interface Author{
     registerReader(r: Reader) : void;
     removeReader(r: Reader) : void;
-    notifyReader() : void;
+    notifyReaders() : void;
 }
 
 export interface Display{

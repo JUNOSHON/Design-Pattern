@@ -2,38 +2,40 @@
 import {Author} from "./interface";
 import {Reader} from "./interface";
 
-export class Webtoon implements Author{
-    private nineteen : boolean =  false;
-    private newBook: boolean = false;
 
+export class Webtoon implements Author {
+    private newBook: boolean = false;
+    private nineteen: boolean = false;
     private readers: Reader[] = [];
 
-    constructor() {
-        this.readers = [];
+    registerReader(reader: Reader): void {
+        this.readers.push(reader);
     }
 
-    registerReader(r: Reader) {
-        this.readers.push(r) ; // 독자 추가
-    }
-    removeReader(r: Reader) {
-        const index = this.readers.indexOf(r);
-        if(index !== -1){
+    removeReader(reader: Reader): void {
+        const index = this.readers.indexOf(reader);
+        if (index !== -1) {
             this.readers.splice(index, 1);
         }
     }
 
-    notifyReader() {
-        for(const reader of this.readers){
-            reader.update(this.newBook, this.nineteen);
+    notifyReaders(): void {
+        for (const reader of this.readers) {
+            reader.update();
         }
     }
-    stateChanged(): void {
-        this.notifyReader();
-    }
-    setState(newBook: boolean, nineteen:boolean):void {
+
+    setState(newBook: boolean, nineteen: boolean): void {
         this.newBook = newBook;
         this.nineteen = nineteen;
+        this.notifyReaders();
+    }
 
-        this.stateChanged();//변화감지
+    getNewBook(): boolean {
+        return this.newBook;
+    }
+
+    getNineteen(): boolean {
+        return this.nineteen;
     }
 }
